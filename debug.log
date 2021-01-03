@@ -1,0 +1,55 @@
+[0928/153711.877:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/153711.879:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/153711.879:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/153711.879:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/153711.879:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/184051.295:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/184051.296:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/184051.296:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/184051.296:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0928/184051.296:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0930/202304.315:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0930/202304.473:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0930/202304.474:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0930/202304.475:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0930/202304.475:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1002/101822.751:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1002/101822.762:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1002/101822.762:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1002/101822.763:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1002/101822.763:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1003/171043.805:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1003/171043.880:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1003/171043.882:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1003/171043.882:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1003/171043.882:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1005/210228.397:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1005/210228.623:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1005/210228.623:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1005/210228.623:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1005/210228.623:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1009/202352.855:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1009/202352.923:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1009/202352.923:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1009/202352.923:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1009/202352.923:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1010/094835.250:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1010/094835.251:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1010/094835.251:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1010/094835.251:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1010/094835.251:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/150418.098:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/150418.324:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/150418.324:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/150418.324:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/150418.324:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/151655.688:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/151655.689:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/151655.689:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/151655.689:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1011/151655.689:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1113/132545.024:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1114/123930.493:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1114/123930.493:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1114/123930.643:ERROR:exception_snapshot_win.cc(99)] thread ID 15112 not found in process
+[1114/123930.643:ERROR:exception_snapshot_win.cc(99)] thread ID 12096 not found in process

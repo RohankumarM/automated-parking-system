@@ -1,0 +1,10 @@
+.home{
+  margin: 0;
+  background-color: rgb(230, 230, 230);
+  height: 100vh;
+}
+
+.intro{
+  text-align: center;
+  padding-top: 100px;
+}

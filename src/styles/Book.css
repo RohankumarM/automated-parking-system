@@ -1,0 +1,141 @@
+.book{
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.booking-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-logo h1{
+  color: #f7402f;
+}
+
+.booking-logo img{
+  width: 80px;
+  margin-left: 20px;
+}
+
+.bookingForm-container{
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+}
+
+.bookingForm{
+  position: absolute; 
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bookingForm .booking-input{
+  max-width: 380px;
+  width: 100%;
+  height: 55px;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+
+.booking-input .number-plate{
+  width: 35px;
+  transform: translate(25%, 25%);
+}
+
+.dropdown{
+  border-radius: 55px;
+  border: 2px solid #f0f0f0;
+}
+
+.icon{
+  transform: translate(60%, 60%);
+  line-height: 55px;
+  color: #acacac;
+  font-size: 1.1rem;
+}
+
+.booking-input input{
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.date-time-picker{
+  z-index: 3;
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.booking-btn{
+  width: 150px;
+  height: 49px;
+  border: none;
+  outline: none;
+  border-radius: 49px;
+  cursor: pointer;
+  background-color: #5995fd;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  transition: .5s;
+}
+
+.booking-receipt-header{
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  color: #34568B;
+  font-size: 30px;
+}
+
+.booking-receipt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px 120px 10px 120px;
+}
+
+.booking-receipt-header{
+  margin-bottom: 20px;
+}
+
+.booking-receipt-container table{
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: none;
+  text-align: left;
+  padding: 7px;
+}
+
+td{
+  color: #353434;
+}
+
+tr:nth-child(odd) {
+  color: #a0a0a0;
+}
+
+.parking-status{
+  background-color: #F0EAD6;
+}

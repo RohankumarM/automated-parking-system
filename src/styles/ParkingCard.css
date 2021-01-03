@@ -1,0 +1,64 @@
+.parkingCard{
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+  width: 600px;
+}
+
+.car-status-display{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 0 0 10px;
+  padding-top: 20px;
+  height: 100px;
+  max-width: 350px;
+}
+
+
+.media{
+  background-size: contain !important;
+}
+
+.media{
+  height: 140px;
+  background-position: left;
+  margin: 20px 0 0 20px;
+}
+
+.MuiCardActions-root{
+  justify-content: center;
+}
+
+.car-display{
+  width: 70px;
+  height: 90px;
+  border-top: 6px solid green;
+  margin-bottom: 20px;
+}
+
+.car-display img{
+  width: inherit;
+}
+
+.booking-status{
+  text-align: center;
+}
+
+
+@media(max-width: 850px){
+  .root{
+    width: 300px;
+    height: 300px;
+  }
+
+  .parkingCard{
+    flex-direction: column;
+    max-width: 600px;
+    max-height: 430px;
+  }
+
+  .car-status-display{
+    height: 80px;
+  }
+}

@@ -9,10 +9,14 @@
 /coverage
 
 # production
-/build
+
+
+# cloud functions
+/function
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local

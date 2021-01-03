@@ -1,0 +1,16 @@
+.findSpace{
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  border: 2px solid gray;
+  width: 100%;
+}
+
+.left{
+  flex: 0.5;
+}
+
+.right{
+  flex: 0.5;
+}
+
