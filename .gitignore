@@ -12,7 +12,7 @@
 /build
 
 # cloud functions
-/function
+/functions
 
 # misc
 .DS_Store
