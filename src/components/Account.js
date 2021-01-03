@@ -74,50 +74,6 @@ const Account = () => {
   }, [])
 
 
-  // useEffect(() => {
-
-  //   const parkingInfo = fire.database().ref('Parking Lot A');
-  //   parkingInfo.child('entryCapture').on('value', (snap) => {
-  //     if (snap.val() === true) {
-  //       setEntryCapturePlate(true);
-  //     } else {
-  //       setEntryCapturePlate(false);
-  //     }
-  //   });
-
-  //   parkingInfo.child('exitCapture').on('value', (snap) => {
-  //     if (snap.val() === true) {
-  //       setExitCapturePlate(true);
-  //     } else {
-  //       setExitCapturePlate(false);
-  //     }
-  //   })
-  // });
-
-  // const capture = () => {
-  //   const imageSrc = webcamRef.current.getScreenshot();
-  //   setImgSrc(imageSrc);
-  // }
-
-  // useEffect(() => {
-  //   if (entryCapturePlate === true || exitCapturePlate === true) {
-  //     capture();
-  //   }
-  // }, [entryCapturePlate, exitCapturePlate]);
-
-  // useEffect(() => {
-  //   if (entryCapturePlate) {
-  //     fire.database().ref('Parking Lot A').child('plateImg').push({
-  //       imgSrc
-  //     })
-  //   }
-  //   else if (exitCapturePlate) {
-  //     fire.database().ref('Parking Lot A').child('exitPlateImage').push({
-  //       imgSrc
-  //     })
-  //   }
-  //   console.log(imgSrc);
-  // }, [imgSrc]);
 console.log(previousBookingData)
   const handlePayment = () => {
     setPaymentCleared(true);
