@@ -2,6 +2,9 @@
     ✨ Automated Parking System ✨
 </h1>
 
+![Licence](https://img.shields.io/github/license/codeforcauseorg/edu-client)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
