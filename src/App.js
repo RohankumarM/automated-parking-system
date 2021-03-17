@@ -20,7 +20,6 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userID, setUserID] = useState('');
 
-
   const login = useCallback(() => {
     setIsLoggedIn(true);
   }, []);
