@@ -1,3 +1,7 @@
+<h1 align="center">
+    ✨ Automated Parking System ✨
+</h1>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
