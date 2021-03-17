@@ -4,72 +4,138 @@
 
 ![Licence](https://img.shields.io/github/license/rohankumarm/automated-parking-system)
 
+## ❤️ Note to new contributors
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Thank you for considering and taking the time to contribute! Before contributing kindly read and follow [Code of Conduct](CODE_OF_CONDUCT.md). To help new developers/contributors there are set of instructions added in [CONTRIBUTING.md](CONTRIBUTING.md). Which describes the intial stages for working on this project. Also refer the [MIT License](LICENSE).
 
-## Available Scripts
+## 📌 Prerequisites
 
-In the project directory, you can run:
+### 💻 1. System requirement :
 
-### `npm start`
+1. Any system with basic configuration.
+2. Operating System : Any (Windows / Linux / Mac).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 💿 2. Software requirement :
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Updated browser
+2. Node js installed (If not download it [here](https://nodejs.org/en/download/)).
+3. Any text editor of your choice.
 
-### `npm test`
+### ⚡ 3. Skill set :
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Knowledge of git & github.
+2. JavaScript
+3. ReactJS
+5. Material-UI
+6. Google Cloud Functions
+7. Google Firebase
 
-### `npm run build`
+## 📌 Setting up Locale Environment
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🚩 Forking repository :
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Fistly you have to make your own copy of project. For that you have to fork the repository. You can find the fork button on the top-right side of the browser window. (Refer image below )
+2. Kindly wait till it gets forked.
+3. After that copy will look like `RohankumarM/automated-parking-system` forked from `RohankumarM/automated-parking-system`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🚩 Clone repository :
 
-### `npm run eject`
+1. Now you have your own copy of project. Here you have to start your work.
+2. Go to desired location on your computer where you want to set-up the project.
+3. Right click there and click on `git bash`. A terminal window will pop up
+4. Type the command `git clone <your-fork-url>.git` and hit enter.(Refer the image to copy url)
+5. Wait for few seconds till the project gets copied
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 🚩 Setting up remote :
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Now you have to set up remote repositories
+2. Type `git remote -v` in terminal to list remote connections to your repo.
+3. It will show something like this:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```console
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+origin  https://github.com/<your-user-name>/automated-parking-system.git (fetch)
+origin  https://github.com/<your-user-name>/automated-parking-system.git (push)
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Now type the command `git remote add upstream https://github.com/codeforcauseorg/edu-client.git` this will set upstream as main directory
+5. Again type in command `git remote -v` to check if remote has been set up correctly
+6. It should show something like this :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```console
 
-### Code Splitting
+origin  https://github.com/<your-user-name>/automated-parking-system.git (fetch)
+origin  https://github.com/<your-user-name>/automated-parking-system.git (push)
+upstream        https://github.com/codeforcauseorg/automated-parking-system.git (fetch)
+upstream        https://github.com/codeforcauseorg/automated-parking-system.git (push)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```
 
-### Analyzing the Bundle Size
+### 🚩 Creating a branch :
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Whenever you want to contribute to any project. It is best practice that you should create a branch and push the branch as PR rather than directly pushing main/master branch
 
-### Making a Progressive Web App
+1. `git branch` will list all the branched in the repository
+2. Now type `git branch <your-branch-name>`
+3. You can check the created branch by `git branch`
+4. But still if you start editing the edits will go to the main branch. To change the path of the edits type in `git checkout <your-branch-name>`
+5. Now you are ready to do the desired changes.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## 📌 Setting up .env file :
+1. Create a new file `.env` in root directory. 
+2. Copy all the default content from `.env.example` file to `.env` file.
+3. You can edit this `.env` file to provide your own project credentials if needed in future for specific tweaks and tests.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## 📌 Setting up project using `npm` :
 
-### Deployment
+1. Open this clonned folder in text editor of your choice
+2. If you want to use the project using `npm` then that comes along side when you download and install node js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### 🚩 Running in Development mode :
 
-### `npm run build` fails to minify
+1. Open the terminal and type in `npm install`, to install all the dependencies.
+2. Run: `npm start`
+3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. The page will reload if you make edits.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### 🚩 Testing changes :
+
+1. After changes type `npm test`. This launches the test runner in the interactive watch mode.
+2. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### 🚩 Building project :
+
+1. Run the command `npm run build`
+2. Builds the app for production to the `build` folder.\
+3. It correctly bundles React in production mode and optimizes the build for the best performance.
+4. The build is minified and the filenames include the hashes.\
+   Your app is ready to be deployed!
+5. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## 📌 Pushing your changes
+
+Now you have made the changes , tested them, and built them. so now its time to push them.
+
+1. Goto your terminal and type `git status` and hit enter, this will show your changes from the files
+2. Then type in `git add` and hit enter, this will add all the files to staging area
+3. Commit the changes by `git commit -m "<message-describing-your-change>"` and hit enter.
+4. Now push your branch to your fork by `git push origin <your-branch-name>` and hit enter.
+
+## 📌 Creating a pull request
+
+By this time you can see a message on your github fork as `your fork is ahead of RohankumarM:master by <number> of commits` and also you can see a button called `Compare and pull request`.
+
+1. Click on `Compare and pull request` button.
+2. You will see a template.(Refer image no 2)
+3. Fill out the template completely by describing your change, cause of change, issue getting fixed etc.
+4. After filling the template completely click on `Pull request`
+
+## 📌 Potential Maintainers :
+
+[Rohan Maisuria](https://github.com/RohankumarM)\
+
+## 📌 Credits :
+
+This project exists thanks to all the people who contribute.
