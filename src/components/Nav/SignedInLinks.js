@@ -1,27 +1,51 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../shared/context/authContext';
+import { useHistory, useLocation } from 'react-router';
+import { makeStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import LocalParkingRoundedIcon from '@material-ui/icons/LocalParkingRounded';
+import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
+import './SignedInLinks.css';
+
+const useStyles = makeStyles({
+  root: {
+    position: "fixed",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.9), 0 6px 20px 0 rgba(0, 0, 0, 0.25)",
+    zIndex: 100,
+  },
+});
 
 function SignedInLinks() {
+  const classes = useStyles();
+  const history = useHistory();
+  const location = useLocation();
 
   const auth = useContext(AuthContext);
 
   return (
     <div className="signed-in-links">
-    <ul>
-      <Link to="/findSpace">
-      <li>Find Space</li>
-      </Link>
-      <Link to="/account">
-      <li>Account</li>
-      </Link>
-      <Link to="/book">
-      <li>Book</li>
-      </Link>
-      <Link to="/login">
-      <li onClick={auth.logout}>Logout</li>
-      </Link>
-    </ul>
+      <BottomNavigation
+        value={location.pathname}
+        onChange={(event, location) => {
+          if (location === '/logout') {
+            auth.logout();
+          }
+          history.push(location);
+        }}
+        showLabels
+        className={classes.root}
+      >
+        <BottomNavigationAction label="Find Parking" value="/findSpace" icon={<SearchRoundedIcon />} />
+        <BottomNavigationAction label="Book" value="/book" icon={<LocalParkingRoundedIcon />} />
+        <BottomNavigationAction label="Profile" value="/account" icon={<AccountCircleRoundedIcon />} />
+        <BottomNavigationAction label="Profile" value="/logout" icon={<ExitToAppRoundedIcon />} />
+      </BottomNavigation>
     </div>
   )
 }

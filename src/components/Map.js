@@ -1,17 +1,17 @@
-import React from 'react';
-import { Map as GoogleMaps, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-import ParkingCard from './ParkingCard';
-import InfoWindowEx from './InfoWindowEx';
+import React, { createRef } from 'react';
+import { Map as GoogleMaps, GoogleApiWrapper, Marker } from 'google-maps-react';
 import * as firebase from 'firebase';
+import '../styles/Map.css';
 
 const mapStyles = {
-  width: '50%',
-  height: '90%',
+  width: '45%',
+  height: '50%',
+  margin: '30px 30px',
+  minWidth: '40%'
 };
 
 export class Map extends React.Component {
   state = {
-    showingInfoWindow: false,  // Hides or shows the InfoWindow
     activeMarker: {},          // Shows the active marker upon click
     selectedPlace: {},          // Shows the InfoWindow to the selected place upon a marker
     location: '',
@@ -19,14 +19,16 @@ export class Map extends React.Component {
     parkingFullStatus: false,
     totalParkingSpace: 5,
     currentLatLng: null,
-    totalParkingLeft: 5
+    totalParkingLeft: 5,
+    bookNow: false,
+    lat: 0,
+    lng: 0,
   };
 
   componentDidMount() {
     const rootRef = firebase.database().ref().child("Parking Lot A");
     rootRef.on('value', snapshot => {
       var data = snapshot.val();
-      console.log(data);
       this.setState({
         location: data.Location,
         status: data.parkingStatus,
@@ -46,11 +48,18 @@ export class Map extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.setState({
+      lat: this.props.selectedLocation.latitude,
+      lng: this.props.selectedLocation.longitude
+    })
+  }
+
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      bookNow: true
     });
 
   onClose = props => {
@@ -62,20 +71,33 @@ export class Map extends React.Component {
     }
   };
 
-  locationLatLng = {
-    lat: 21.2352936,
-    lng: 72.8544311,
-  };
+  bookingHandler = () => {
+    this.setState({
+      bookNow: true
+    })
+  }
 
   render() {
+    let mapRef = createRef();
+    console.log(this.state.bookNow)
+    console.log(this.state.selectedPlace)
+    console.log(this.state.activeMarker)
 
     return (
-      <div className="map">
+      <div className="map" key={this.props.selectedLocation.latitude} >
         <GoogleMaps
+          ref={mapRef}
           google={this.props.google}
           zoom={12}
           style={mapStyles}
-          initialCenter={this.locationLatLng}
+          initialCenter={{
+            lat: this.props.selectedLocation.latitude,
+            lng: this.props.selectedLocation.longitude
+          }}
+          center={{
+            lat: this.props.selectedLocation.latitude,
+            lng: this.props.selectedLocation.longitude
+          }}
         >
 
           <Marker
@@ -83,22 +105,8 @@ export class Map extends React.Component {
             name={'Amroli'}
             icon={this.state.parkingFullStatus === true ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
               : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'}
+            animation={2}
           />
-          <InfoWindowEx
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <ParkingCard
-              location={this.state.location} 
-              status={this.state.status}
-              fullStatus={this.state.parkingFullStatus}
-              totalParkingLeft={this.state.totalParkingLeft}
-              totalParkingSpace={this.state.totalParkingSpace}
-              />
-            </div>
-          </InfoWindowEx>
         </GoogleMaps>
       </div>
     )

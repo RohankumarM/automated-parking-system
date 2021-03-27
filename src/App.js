@@ -32,7 +32,6 @@ const App = () => {
     setIsLoggedIn(false);
     fire.auth().signOut();
   }, []);
-  console.log(isLoggedIn);
 
   // const handlesetuserID = (id) => {
   //   setUserID(id);
@@ -80,8 +79,6 @@ const App = () => {
     );
   }
 
-
-
   const theme = createMuiTheme({
     palette: {
       type: darkMode ? "dark" : "light",
@@ -104,9 +101,7 @@ const App = () => {
           <Paper className="main-container">
             <Router>
               {/* <img className="logo" src={logo} alt="image" /> */}
-              <Nav
-                darkMode={darkMode}
-                handleDarkMode={handleDarkMode} />
+              <Nav />
 
               {routes}
             </Router>

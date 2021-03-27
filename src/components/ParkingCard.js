@@ -1,6 +1,6 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import parkingSpace from '../images/parking-space.svg';
 import "../styles/ParkingCard.css";
 
@@ -33,12 +33,8 @@ class ParkingCard extends React.Component {
 
           <Card className="root">
             <CardActionArea>
-              <CardMedia
-                className="media"
-                image={parkingSpace}
-              />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="h6" component="h6">
                   Parking at {this.state.location}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

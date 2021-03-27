@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import fire from '../base';
 import * as d3 from 'd3';
+import '../styles/BarChart.css';
 
 const BarChart = () => {
   const canvasRef = useRef();
@@ -17,10 +18,8 @@ const BarChart = () => {
 
         snapshot.forEach(childSnapshot => {
           let key = childSnapshot.key;
-          console.log(key);
           const timeStamp = snapshot.child(key).child('entryTime').val();
           const day = new Date(timeStamp).getDay();
-          console.log(day);
           daysArray.push(day);
         });
         setDays(daysArray);
@@ -146,7 +145,6 @@ const BarChart = () => {
           "count": countParkingPerDays(days, 6)
         }
       ];
-      console.log(parkingData)
       setPData(parkingData);
       update(parkingData);
     }
@@ -159,8 +157,8 @@ const BarChart = () => {
   }
 
   return (
-    <div ref={canvasRef}>
-
+    <div className="barChart">
+    <div ref={canvasRef}></div>
     </div>
   )
 }

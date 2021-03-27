@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import '../styles/Nav.css';
 import SignInLinks from './Nav/SignedInLinks';
 import SignOutLinks from './Nav/SignOutLinks';
@@ -7,7 +7,7 @@ import { Switch, Typography } from '@material-ui/core';
 
 const Nav = ({ user, darkMode, handleDarkMode }) => {
 
-  const navbar = useRef(null);
+  // const navbar = useRef(null);
 
   const auth = useContext(AuthContext);
   console.log(user);
@@ -18,14 +18,9 @@ const Nav = ({ user, darkMode, handleDarkMode }) => {
 
 
   return (
-    <nav>
-      <div className="header">Smart Parking System</div>
-      {auth.isLoggedIn ? <SignInLinks /> : <SignOutLinks />}
-      <div className="dark-mode-container">
-      <Switch className="dark-mode-btn" checked={darkMode} onChange={handleDarkMode} size='small'/>
-      <Typography className="dark-mode-font">Dark Mode</Typography>
+      <div>
+        {auth.isLoggedIn ? <SignInLinks /> : <SignOutLinks />}
       </div>
-    </nav>
   )
 }
 

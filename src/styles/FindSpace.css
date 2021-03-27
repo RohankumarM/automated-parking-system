@@ -1,16 +1,43 @@
-.findSpace{
+.findSpace__search__top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.findSpace__search__map{
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  border: 2px solid gray;
-  width: 100%;
+  justify-content: space-between;
 }
 
-.left{
+.findSpace__search__map__left{
   flex: 0.5;
 }
 
-.right{
+.findSpace__search__map__right{
   flex: 0.5;
+  margin-top: 30px;
+}
+
+.bar__chart{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.MuiCardActions-root{
+  justify-content: center !important;
+}
+
+@media(max-width: 950px){
+  .findSpace__search__map{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .findSpace__search__map__left{
+    margin-right: 300px;
+  }
 }
 
