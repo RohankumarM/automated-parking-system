@@ -22,7 +22,7 @@ body, input{
   width: 2000px;
   height: 2000px;
   border-radius: 50%;
-  background: linear-gradient(-45deg, #4481eb, #04befe);
+  background: linear-gradient(-45deg, #5cdb95, #5cdb95);
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
@@ -110,6 +110,16 @@ form.signup-form{
   color: #333;
 }
 
+.input-field__userImage{
+  margin: 15px 0;
+}
+
+.input-field__userImage label{
+  border: 2px solid #5cdb95;
+  background-color: #5cdb95;
+  padding: 10px;
+}
+
 .input-field input::placeholder{
   color: #aaa;
   font-weight: 500;
@@ -137,6 +147,7 @@ form.signup-form{
 .social_login{
   padding: .7rem 0;
   font-size: 1rem;
+  margin-top: -8px;
 }
 
 .social-media{
@@ -260,6 +271,7 @@ form.signup-form{
 
 .login.sign-up-mode .right-panel{
   pointer-events: all;
+  margin-top: -30px;
 }
 
 .login.sign-up-mode .right-panel button{
@@ -278,6 +290,7 @@ form.signup-form{
 .login.sign-up-mode form.signup-form{
   z-index: 2;
   opacity: 1;
+  margin-top: -20px;
 }
 
 @media(max-width: 870px){
@@ -391,7 +404,7 @@ form.signup-form{
   }
 
   .login.sign-up-mode:before{
-    bottom: 28%;
+    bottom: 22%;
     left: 50%;
   }
 }

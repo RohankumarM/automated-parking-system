@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../shared/context/authContext';
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@material-ui/core';
+import { Card, CardMedia, Divider, CardContent } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Avatar from '@material-ui/core/Avatar';
 import fire from '../base';
 import Loading from './Loading';
 import '../styles/account.css';
@@ -26,25 +29,25 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
 const Account = () => {
 
-  // const webcamRef = React.useRef(null);
-  // const [imgSrc, setImgSrc] = React.useState(null);
-  // const videoConstraints = {
-  //   width: 600,
-  //   height: 600,
-  //   facingMode: "user",
-  // };
+  const classes = useStyles();
 
   const authContext = useContext(AuthContext);
   const [accountInfo, setAccountInfo] = useState();
   const [previousBookingData, setPreviousBookingData] = useState([]);
   const [currentBookingData, setCurrentBookingData] = useState([]);
-  // const [entryCapturePlate, setEntryCapturePlate] = useState(false);
-  // const [exitCapturePlate, setExitCapturePlate] = useState(false);
   const [paymentCleared, setPaymentCleared] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(false);
-  // const [paymentCleared, setPaymentCleared] = useState(true);
   const [open, setOpen] = useState(false);
 
 
@@ -54,7 +57,7 @@ const Account = () => {
     fire.database().ref('users').orderByKey().equalTo(`${authContext.userID}`)
       .on('value', (snapshot) => {
         let previousData = Object.values(snapshot.val());
-        setPreviousBookingData(previousData[0].previousBooking);
+        previousData === null ? setPreviousBookingData([]) : setPreviousBookingData(previousData[0].previousBooking);
       });
 
     bookingInfo.orderByChild("bookingStatus").equalTo(`active_${authContext.userID}`)
@@ -74,7 +77,7 @@ const Account = () => {
   }, [])
 
 
-console.log(previousBookingData)
+  console.log(previousBookingData)
   const handlePayment = () => {
     setPaymentCleared(true);
   }
@@ -83,6 +86,7 @@ console.log(previousBookingData)
   return (
     <div className="account">
       {accountInfo ? <div className="account-info">
+        {/* <Avatar className="account__profile__pic" src={accountInfo.userImageUrl} />
         <div className="account-data">
           <h3>Name</h3>
           <p>{accountInfo.username}</p>
@@ -95,6 +99,24 @@ console.log(previousBookingData)
           <h3>Number Plate</h3>
           <p>{accountInfo.numberPlate}</p>
         </div>
+      </div> */}
+
+        <Card className={classes.root}>
+          <CardMedia
+            className={classes.media}
+            image={accountInfo.userImageUrl}
+            title={accountInfo.username}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              Lizard
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+              across all continents except Antarctica
+            </Typography>
+          </CardContent>
+        </Card>
       </div> : <Loading />}
 
       {currentBookingData || previousBookingData
@@ -121,7 +143,7 @@ console.log(previousBookingData)
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {previousBookingData === null ? <Loading />
+                      {previousBookingData === null || [] ? <Loading />
                         : Object.keys(previousBookingData).map((dataId, index) => (
                           <StyledTableRow key={index}>
                             <StyledTableCell component="th" scope="row">
@@ -214,7 +236,7 @@ console.log(previousBookingData)
         </div>}
       <div className="payment">
         {paymentInfo ? <div><button onClick={handlePayment}>PAY</button></div>
-          : <div>No payment Info</div>
+          : <div>No payment Info!</div>
         }
       </div>
 

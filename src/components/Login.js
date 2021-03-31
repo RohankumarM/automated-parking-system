@@ -5,6 +5,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
 import { AuthContext } from '../shared/context/authContext';
 import fire from '../base';
+import { storage } from '../base';
 import * as firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import '../styles/Login.css';
@@ -21,6 +22,7 @@ const Login = ({ userID }) => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [userImage, setUserImage] = useState(null);
 
   const clearInputs = () => {
     setEmail('');
@@ -37,49 +39,59 @@ const Login = ({ userID }) => {
     clearErrors();
     fire.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
       return fire.auth().signInWithEmailAndPassword(email, password)
-      .then((profile) => {
-      }).catch(err => {
-        switch (err.code) {
-          case "auth/invalid-user":
-          case "auth/user-disabled":
-          case "auth/user-not-found":
-            setEmailError(err.message);
-            break;
-          case "auth/wrong-password":
-            setPasswordError(err.message);
-            break;
-          default:
-        }
-      });
+        .then((profile) => {
+        }).catch(err => {
+          switch (err.code) {
+            case "auth/invalid-user":
+            case "auth/user-disabled":
+            case "auth/user-not-found":
+              setEmailError(err.message);
+              break;
+            case "auth/wrong-password":
+              setPasswordError(err.message);
+              break;
+            default:
+          }
+        });
     })
-    .catch((err) => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const handleFirebaseSignUp = (event) => {
     event.preventDefault();
     clearErrors();
-    fire.auth().createUserWithEmailAndPassword(email, password)
-    .then((profile) => {
-      // authContext.signUp();
-      fire.database().ref('users/' + profile.user.uid)
-      .set({
-        username,
-        numberPlate,
-        email
-      });
-    })
-      .catch(err => {
-        switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-user":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message);
-            break;
-          default:
-        }
-      });
+
+    const uploadTask = storage.ref(`images/${email}/${userImage.name}`).put(userImage);
+    uploadTask.on("state_changed",
+      snapshot => { },
+      error => { console.log(error) },
+      () => storage.ref("images").child(email).child(userImage.name).getDownloadURL()
+        .then(url => {
+          fire.auth().createUserWithEmailAndPassword(email, password)
+            .then((profile) => {
+              // authContext.signUp();
+              fire.database().ref('users/' + profile.user.uid)
+                .set({
+                  username,
+                  numberPlate,
+                  email,
+                  userImageUrl: url
+                });
+            })
+            .catch(err => {
+              switch (err.code) {
+                case "auth/email-already-in-use":
+                case "auth/invalid-user":
+                  setEmailError(err.message);
+                  break;
+                case "auth/weak-password":
+                  setPasswordError(err.message);
+                  break;
+                default:
+              }
+            });
+        })
+    )
   };
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
@@ -122,7 +134,7 @@ const Login = ({ userID }) => {
             </div>
             <div className="input-field">
               <LockIcon className="icon" />
-              <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
+              <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
               <p className="errorMsg">{passwordError}</p>
             </div>
             <input type="submit" value="Login" className="login_btn" />
@@ -138,15 +150,15 @@ const Login = ({ userID }) => {
             </div>
           </form>
 
-          <form action="" className="signup-form" onClick={handleFirebaseSignUp}>
+          <form action="" className="signup-form" onSubmit={handleFirebaseSignUp}>
             <h2 className="title">Signup</h2>
             <div className="input-field">
               <AccountCircleIcon className="icon" />
-              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="input-field">
               <img className="number-plate" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/number-plate-1582888-1337733.png" alt="number plate" />
-              <input type="text" placeholder="Number Plate" required onChange={(e) => setNumberPlate(e.target.value)}/>
+              <input type="text" placeholder="Number Plate" required onChange={(e) => setNumberPlate(e.target.value)} />
             </div>
             <div className="input-field">
               <AccountCircleIcon className="icon" />
@@ -155,6 +167,11 @@ const Login = ({ userID }) => {
             <div className="input-field">
               <LockIcon className="icon" />
               <input type="password" value={password} placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
+            </div>
+
+            <div className="input-field__userImage">
+              <label for="imageUpload">Upload Photo</label>
+              <input type="file" id="imageUpload" accept="image/*" required style={{ display: 'none' }} onChange={(e) => setUserImage(e.target.files[0])} />
             </div>
             <input type="submit" value="SignUp" className="login_btn" />
 
