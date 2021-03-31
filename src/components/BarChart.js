@@ -74,7 +74,7 @@ const BarChart = () => {
       xAxisGroup.selectAll('text')
         .attr('transform', 'rotate(-40)')
         .attr('text-anchor', 'end')
-        .attr('fill', 'orange');
+        .attr('fill', '#05386b');
 
       //update chart upon data
       const update = (data) => {
@@ -93,7 +93,7 @@ const BarChart = () => {
         //update current shapes in dom
         rect
           .attr('width', x.bandwidth)
-          .attr('fill', 'orange')
+          .attr('fill', '#05386b')
           .attr('x', d => x(d.day))
           .transition().duration(500)
           .attr('height', d => graphHeight - y(d.count))
@@ -104,7 +104,7 @@ const BarChart = () => {
           .append('rect')
           .attr('width', x.bandwidth)
           .attr('height', 0)
-          .attr('fill', 'orange')
+          .attr('fill', '#05386b')
           .attr('x', d => x(d.day))
           .attr('y', graphHeight)
           .transition().duration(500)

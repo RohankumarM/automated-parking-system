@@ -1,17 +1,22 @@
+.findSpace{
+  margin:0;
+}
+
 .findSpace__search__top{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .findSpace__title{
   display:flex;
   justify-content: center;
-  margin-top: 20px !important;
-  font-size: 30px !important;
+  font-size: 32px !important;
+  padding-top: 10px;
   font-family: 'Roboto', sans-serif;
-  color: green;
+  color: #f8fdf1;
+  font-weight: 500 !important;
 }
 
 .findSpace__search__map{
@@ -22,6 +27,7 @@
 
 .findSpace__search__map__left{
   flex: 0.5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .findSpace__search__map__right{
@@ -38,6 +44,20 @@
   justify-content: center !important;
 }
 
+.MuiAutocomplete-input{
+  color: #f8fdf1 !important;
+  font-weight: 400;
+}
+
+.book__now__btn {
+  text-decoration: none;
+  color: #05386b;
+  border: 2px solid #379683;
+  padding: 10px;
+  margin-top: -10px;
+  border-radius: 20px;
+}
+
 @media(max-width: 950px){
   .findSpace__search__map{
     flex-direction: column;
@@ -46,6 +66,10 @@
   }
   .findSpace__search__map__left{
     max-width: 100%;
+  }
+
+  .findSpace__search__map__right{
+    max-height: 400px;
   }
 }
 

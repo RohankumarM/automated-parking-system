@@ -71,7 +71,7 @@ const FindSpace = () => {
       <div className="display__place">
         <div className="findSpace__search__top">
           <Autocomplete
-            id="parking__location__searchbox"
+            className="parking__location__searchbox"
             value={value}
             onChange={(event, newValue) => {
               newValue === null ? setValue(parkingLocations[0]) : setValue(newValue);
@@ -111,7 +111,7 @@ const FindSpace = () => {
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                  {totalParkingLeft === 0 ? <Typography>Full</Typography> : <Link to="/book">
+                  {totalParkingLeft === 0 ? <Typography>Full</Typography> : <Link to="/book" className="book__now__btn">
                     Book now
                   </Link>}
                 </Button>

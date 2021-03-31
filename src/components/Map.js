@@ -4,9 +4,9 @@ import * as firebase from 'firebase';
 import '../styles/Map.css';
 
 const mapStyles = {
-  width: '83%',
-  height: '60%',
-  margin: '30px 0 0 0',
+  width: '350px',
+  height: '200px',
+  margin: '30px 0 40px',
   minWidth: '40%'
 };
 
@@ -62,14 +62,14 @@ export class Map extends React.Component {
       bookNow: true
     });
 
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
+  // onClose = props => {
+  //   if (this.state.showingInfoWindow) {
+  //     this.setState({
+  //       showingInfoWindow: false,
+  //       activeMarker: null
+  //     });
+  //   }
+  // };
 
   bookingHandler = () => {
     this.setState({
@@ -81,11 +81,11 @@ export class Map extends React.Component {
     let mapRef = createRef();
 
     return (
-      <div className="map" key={this.props.selectedLocation.latitude} >
+      <div className="map" key={this.props.selectedLocation.latitude}>
         <GoogleMaps
           ref={mapRef}
           google={this.props.google}
-          zoom={12}
+          zoom={15}
           style={mapStyles}
           initialCenter={{
             lat: this.props.selectedLocation.latitude,

@@ -1,6 +1,7 @@
 .app{
-  max-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
+  background-color:#5cdb95;
 }
 
 .logo{
