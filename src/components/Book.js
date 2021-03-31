@@ -122,9 +122,9 @@ const Book = (props) => {
     <Paper>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div className="book">
-          <div className="booking-logo">
-            <h1>Book your parking</h1>
-            <img src={Booking} alt="booking" />
+          <div className="booking__header">
+            <img className="booking__header__logo" src={Booking} alt="booking" />
+            <h1 className="booking__header__title">Book your parking</h1>
           </div>
           {showBookingForm ? <div className="bookingForm-container">
             <form className="bookingForm" onSubmit={handleBooking}>

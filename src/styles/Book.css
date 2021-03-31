@@ -4,19 +4,22 @@
   min-height: 100vh;
 }
 
-.booking-logo{
+.booking__header{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 40px;
 }
 
-.booking-logo h1{
-  color: #f7402f;
+.booking__header__title{
+  font-family: 'Roboto', sans-serif;
+  color: #f8fdf1;
+  font-weight: 600 !important;
+  font-size: 35px;
 }
 
-.booking-logo img{
-  width: 80px;
-  margin-left: 20px;
+.booking__header__logo{
+  width: 60px;
 }
 
 .bookingForm-container{
@@ -27,7 +30,7 @@
 
 .bookingForm{
   position: absolute; 
-  top: 40%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -41,6 +44,7 @@
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
+  text-align: center;
 }
 
 .booking-input .number-plate{
@@ -68,6 +72,7 @@
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
+  padding-left: 10px;
 }
 
 .date-time-picker{
