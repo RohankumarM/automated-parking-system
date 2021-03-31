@@ -1,10 +1,12 @@
-.parkingCard{
+ .parkingCard{
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   height: 100%;
-  width: 600px;
+  width: 100%;
 }
 
+
+/*
 .car-status-display{
   display: flex;
   justify-content: flex-start;
@@ -31,8 +33,8 @@
 }
 
 .car-display{
-  width: 70px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   border-top: 6px solid green;
   margin-bottom: 20px;
 }
@@ -61,4 +63,4 @@
   .car-status-display{
     height: 80px;
   }
-}
+} */

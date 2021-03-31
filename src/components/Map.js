@@ -4,9 +4,9 @@ import * as firebase from 'firebase';
 import '../styles/Map.css';
 
 const mapStyles = {
-  width: '45%',
-  height: '50%',
-  margin: '30px 30px',
+  width: '83%',
+  height: '60%',
+  margin: '30px 0 0 0',
   minWidth: '40%'
 };
 
@@ -79,9 +79,6 @@ export class Map extends React.Component {
 
   render() {
     let mapRef = createRef();
-    console.log(this.state.bookNow)
-    console.log(this.state.selectedPlace)
-    console.log(this.state.activeMarker)
 
     return (
       <div className="map" key={this.props.selectedLocation.latitude} >

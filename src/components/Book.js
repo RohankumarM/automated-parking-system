@@ -133,6 +133,7 @@ const Book = (props) => {
                 <select autoFocus name="cars" className="dropdown" value={locationSelect} onChange={e => setLocationSelect(e.target.value)}>
                   <option>Select a location</option>
                   <option value="Amroli">Amroli</option>
+                  <option value="Adajan">Adajan</option>
                 </select>
               </div>
               <div className="booking-input">

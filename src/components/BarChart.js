@@ -38,12 +38,12 @@ const BarChart = () => {
     if (showChart) {
       const svg = d3.select(canvasRef.current)
         .append('svg')
-        .attr('width', 500)
-        .attr('height', 500);
+        .attr('width', 400)
+        .attr('height', 230);
 
-      const margin = { top: 20, right: 10, bottom: 100, left: 80 };
-      const graphWidth = 400 - margin.left - margin.right;
-      const graphHeight = 400 - margin.top - margin.bottom;
+      const margin = { top: 20, right: 10, bottom: 100, left: 70 };
+      const graphWidth = 200 - margin.left - margin.right;
+      const graphHeight = 300 - margin.top - margin.bottom;
 
       const graph = svg.append('g')
         .attr('width', graphWidth)
@@ -60,7 +60,7 @@ const BarChart = () => {
         .range([graphHeight, 0]);
 
       const x = d3.scaleBand()
-        .range([0, 400])
+        .range([0, 300])
         .paddingInner(0.2)
         .paddingOuter(0.2);
 
@@ -117,31 +117,31 @@ const BarChart = () => {
 
       parkingData = [
         {
-          "day": "Sunday",
+          "day": "Sun",
           "count": countParkingPerDays(days, 0)
         },
         {
-          "day": "Monday",
+          "day": "Mon",
           "count": countParkingPerDays(days, 1)
         },
         {
-          "day": "Tuesday",
+          "day": "Tues",
           "count": countParkingPerDays(days, 2)
         },
         {
-          "day": "Wednesday",
+          "day": "Wed",
           "count": countParkingPerDays(days, 3)
         },
         {
-          "day": "Thursday",
+          "day": "Thurs",
           "count": countParkingPerDays(days, 4)
         },
         {
-          "day": "Friday",
+          "day": "Fri",
           "count": countParkingPerDays(days, 5)
         },
         {
-          "day": "Saturday",
+          "day": "Sat",
           "count": countParkingPerDays(days, 6)
         }
       ];

@@ -5,6 +5,15 @@
   margin-top: 30px;
 }
 
+.findSpace__title{
+  display:flex;
+  justify-content: center;
+  margin-top: 20px !important;
+  font-size: 30px !important;
+  font-family: 'Roboto', sans-serif;
+  color: green;
+}
+
 .findSpace__search__map{
   display: flex;
   flex-direction: row;
@@ -17,14 +26,13 @@
 
 .findSpace__search__map__right{
   flex: 0.5;
-  margin-top: 30px;
 }
 
-.bar__chart{
+/* .bar__chart{
   display: flex;
   justify-content: center;
   margin-top: 30px;
-}
+} */
 
 .MuiCardActions-root{
   justify-content: center !important;
@@ -34,10 +42,10 @@
   .findSpace__search__map{
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin: 30px;
   }
   .findSpace__search__map__left{
-    margin-right: 300px;
+    max-width: 100%;
   }
 }
 

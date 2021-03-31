@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Map from './Map';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ParkingCard from './ParkingCard';
+import * as firebase from 'firebase';
 import '../styles/FindSpace.css';
 
 const parkingLocations = [
@@ -21,7 +23,7 @@ const parkingLocations = [
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 500,
   },
   media: {
     height: 140,
@@ -40,7 +42,21 @@ const FindSpace = () => {
 
   const [value, setValue] = useState(parkingLocations[0]);
   const [inputValue, setInputValue] = useState('');
+  const [parkingStatus, setParkingStatus] = useState([]);
+  const [parkingFullStatus, setParkingFullStatus] = useState(false);
+  const [totalParkingLeft, setTotalParkingLeft] = useState(0);
+  const [totalParkingSpace, setTotalParkingSpace] = useState(0);
 
+  useEffect(() => {
+    firebase.database().ref('/Parking Lot A')
+      .on('value', snapshot => {
+        const data = snapshot.val();
+        setParkingStatus(data.parkingStatus);
+        setParkingFullStatus(data.parkingFullStatus);
+        setTotalParkingLeft(data.totalParkingLeft);
+        setTotalParkingSpace(data.totalParkingSpace);
+      })
+  }, []);
 
   // function handleSignout = () => {
   //   fire.auth().signOut();
@@ -51,14 +67,14 @@ const FindSpace = () => {
 
   return (
     <div className="findSpace">
-
+      <Typography className="findSpace__title">Search For Parking</Typography>
       <div className="display__place">
         <div className="findSpace__search__top">
           <Autocomplete
             id="parking__location__searchbox"
             value={value}
             onChange={(event, newValue) => {
-              setValue(newValue);
+              newValue === null ? setValue(parkingLocations[0]) : setValue(newValue);
             }}
             inputValue={inputValue}
             onInputChange={(event, newInputValue) => {
@@ -72,43 +88,40 @@ const FindSpace = () => {
         </div>
 
         <div className="findSpace__search__map">
-          <div className="findSpace__search__map__left">
-            {/* Display MAP */}
-            <Map selectedLocation={value} />
-          </div>
 
-          <div className="findSpace__search__map__right">
+          <div className="findSpace__search__map__left">
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
                   image={value.image}
-                  title="Contemplative Reptile"
+                  title={value.place}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {value.place}
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                    across all continents except Antarctica
-                  </Typography>
+                  <ParkingCard
+                    location={value.place}
+                    status={parkingStatus}
+                    fullStatus={parkingFullStatus}
+                    totalParkingLeft={totalParkingLeft}
+                    totalParkingSpace={totalParkingSpace} />
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                  <Link to="/book">
+                  {totalParkingLeft === 0 ? <Typography>Full</Typography> : <Link to="/book">
                     Book now
-                  </Link>
+                  </Link>}
                 </Button>
               </CardActions>
             </Card>
           </div>
-        </div>
 
-        <div className="bar__chart">
-          <div className="data-visualization">
-            <BarChart />
+          <div className="findSpace__search__map__right">
+            {/* Display MAP */}
+            <Map selectedLocation={value} />
           </div>
         </div>
       </div>

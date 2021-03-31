@@ -1,5 +1,5 @@
 .app{
-  height: 90vh;
+  max-height: 100vh;
   box-sizing: border-box;
 }
 
@@ -7,10 +7,4 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 23%;
-    height: 23%;
-}
-
-.MuiPaper-root {
-  margin-right: 0px !important;
 }

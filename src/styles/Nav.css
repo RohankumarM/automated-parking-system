@@ -58,10 +58,10 @@ nav ul li:active{
 }
  
 @media(max-width: 700px){
-  nav{
+  /* nav{
     flex-direction: column;
   }
   .dark.mode-btn{
     flex-direction: column;
-  }
+  } */
 }
