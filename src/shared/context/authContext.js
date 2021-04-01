@@ -6,4 +6,7 @@ export const AuthContext = createContext({
   logout: () => { },
   signUp: () => { },
   userID: '',
+  username: '',
+  email: '', 
+  image: '',
 });

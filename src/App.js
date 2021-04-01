@@ -30,19 +30,16 @@ const App = () => {
     fire.auth().signOut();
   }, []);
 
-  // const handlesetuserID = (id) => {
-  //   setUserID(id);
-  //   console.log(userID);
-  // }
-
   let routes;
   fire.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log(user);
+      console.log(user)
       setIsLoggedIn(true);
       setUserID(user.uid);
     }
   });
+
+  console.log(userID)
 
   if (isLoggedIn) {
     routes = (
@@ -72,7 +69,8 @@ const App = () => {
         <Route path="/findSpace">
           <FindSpace />
         </Route>
-        <Route path="/login" render={(props) => <Login userID={userID} {...props} />} >
+        <Route path="/login">
+          <Login />
         </Route>
         <Redirect to="/login" />
       </Switch>

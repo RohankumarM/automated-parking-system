@@ -49,7 +49,7 @@ function SignedInLinks() {
         <BottomNavigationAction label="Find Parking" value="/findSpace" icon={<SearchRoundedIcon />} />
         <BottomNavigationAction label="Book" value="/book" icon={<LocalParkingRoundedIcon />} />
         <BottomNavigationAction label="Profile" value="/account" icon={<AccountCircleRoundedIcon />} />
-        <BottomNavigationAction label="Profile" value="/logout" icon={<ExitToAppRoundedIcon />} />
+        <BottomNavigationAction label="Logout" value="/logout" icon={<ExitToAppRoundedIcon />} />
       </BottomNavigation>
     </div>
   )

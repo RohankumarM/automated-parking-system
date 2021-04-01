@@ -4,17 +4,14 @@ import SignInLinks from './Nav/SignedInLinks';
 import SignOutLinks from './Nav/SignOutLinks';
 import { AuthContext } from '../shared/context/authContext';
 
-const Nav = ({ user, darkMode, handleDarkMode }) => {
+const Nav = () => {
 
   // const navbar = useRef(null);
   const auth = useContext(AuthContext);
-  console.log(user);
 
   // const handleEvent = (e) =>{
   //   navbar.current.classList.toggle('active');
   // };
-
-
   return (
     <div>
         {auth.isLoggedIn ? <SignInLinks /> : <SignOutLinks />}

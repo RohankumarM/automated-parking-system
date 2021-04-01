@@ -4,13 +4,14 @@ import LockIcon from '@material-ui/icons/Lock';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
 import { AuthContext } from '../shared/context/authContext';
+import GoogleLogin from 'react-google-login';
 import fire from '../base';
 import { storage } from '../base';
 import * as firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import '../styles/Login.css';
 
-const Login = ({ userID }) => {
+const Login = () => {
 
   const history = useHistory();
   const authContext = useContext(AuthContext);
@@ -116,6 +117,21 @@ const Login = ({ userID }) => {
     container.current.classList.add("sign-up-mode");
   };
 
+  const responseGoogle = (response) => {
+    console.log(response);
+    setUsername(response.profileObj.name);
+    setEmail(response.profileObj.email);
+    setUserImage(response.profileObj.imageUrl);
+    fire.database().ref('users/' + response.profileObj.googleId)
+      .set({
+        username : response.profileObj.name,
+        numberPlate : '',
+        email: response.profileObj.email,
+        userImageUrl: response.profileObj.imageUrl
+      });
+    authContext.login();
+  }
+
   const handleSignUpAnimation = () => {
     container.current.classList.remove("sign-up-mode");
   };
@@ -141,12 +157,13 @@ const Login = ({ userID }) => {
 
             <p className="social_login">Or Sign In With Social Platforms</p>
             <div className="social-media">
-              <a href="/login" className="social-icon">
-                <GTranslateIcon />
-              </a>
-              <a href="/login" className="social-icon">
-                <FacebookIcon />
-              </a>
+              <GoogleLogin
+                clientId="21371711572-t8vqdacjrsj5ih7qls4hl308seue7qn1.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+              />
             </div>
           </form>
 
@@ -170,7 +187,7 @@ const Login = ({ userID }) => {
             </div>
 
             <div className="input-field__userImage">
-              <label for="imageUpload">Upload Photo</label>
+              <label htmlFor="imageUpload">Upload Photo</label>
               <input type="file" id="imageUpload" accept="image/*" required style={{ display: 'none' }} onChange={(e) => setUserImage(e.target.files[0])} />
             </div>
             <input type="submit" value="SignUp" className="login_btn" />

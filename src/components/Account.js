@@ -32,10 +32,12 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    width: '300px'
   },
   media: {
     height: 140,
   },
+  
 });
 
 const Account = () => {
@@ -62,7 +64,6 @@ const Account = () => {
 
     bookingInfo.orderByChild("bookingStatus").equalTo(`active_${authContext.userID}`)
       .on("value", (snapshot) => {
-        console.log(snapshot.val());
         setCurrentBookingData(snapshot.val());
       });
 
@@ -76,12 +77,9 @@ const Account = () => {
 
   }, [])
 
-
-  console.log(previousBookingData)
   const handlePayment = () => {
     setPaymentCleared(true);
   }
-
 
   return (
     <div className="account">
@@ -104,17 +102,18 @@ const Account = () => {
         <Card className={classes.root}>
           <CardMedia
             className={classes.media}
-            image={accountInfo.userImageUrl}
-            title={accountInfo.username}
+            image="https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8cGFya2luZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+            title={accountInfo.username || authContext.username}
           />
+          <Avatar className="account__profile__pic" src={accountInfo.userImageUrl || authContext.image} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Lizard
+            <Typography style={{ marginTop: '-70px', display: 'flex', justifyContent: 'center', color: '#05368b' }} gutterBottom variant="h6" component="h2">
+              {accountInfo.username || authContext.username}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+            <Typography style={{ display: 'flex', justifyContent: 'center', color: '#05368b' }} gutterBottom variant="body2">
+              {accountInfo.email || authContext.email}
             </Typography>
+            <Divider light />
           </CardContent>
         </Card>
       </div> : <Loading />}
