@@ -5,8 +5,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
 import { AuthContext } from '../shared/context/authContext';
 import GoogleLogin from 'react-google-login';
-import fire from '../base';
-import { storage } from '../base';
+import fire, { provider, storage } from '../base';
 import * as firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import '../styles/Login.css';
@@ -117,19 +116,16 @@ const Login = () => {
     container.current.classList.add("sign-up-mode");
   };
 
-  const responseGoogle = (response) => {
-    console.log(response);
-    setUsername(response.profileObj.name);
-    setEmail(response.profileObj.email);
-    setUserImage(response.profileObj.imageUrl);
-    fire.database().ref('users/' + response.profileObj.googleId)
-      .set({
-        username : response.profileObj.name,
-        numberPlate : '',
-        email: response.profileObj.email,
-        userImageUrl: response.profileObj.imageUrl
-      });
-    authContext.login();
+  const responseGoogle = () => {
+    fire.auth().signInWithPopup(provider).then((profile) => {
+      fire.database().ref('users/' + profile.user.uid)
+        .set({
+          username: profile.user.displayName,
+          numberPlate: '',
+          email: profile.user.email,
+          userImageUrl: profile.user.photoURL
+        });
+    });
   }
 
   const handleSignUpAnimation = () => {
@@ -156,16 +152,12 @@ const Login = () => {
             <input type="submit" value="Login" className="login_btn" />
 
             <p className="social_login">Or Sign In With Social Platforms</p>
-            <div className="social-media">
-              <GoogleLogin
-                clientId="21371711572-t8vqdacjrsj5ih7qls4hl308seue7qn1.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-              />
-            </div>
           </form>
+          <div className="social-media">
+            <button className="social-icon" onClick={responseGoogle}>
+              <GTranslateIcon />
+            </button>
+          </div>
 
           <form action="" className="signup-form" onSubmit={handleFirebaseSignUp}>
             <h2 className="title">Signup</h2>
@@ -194,12 +186,9 @@ const Login = () => {
 
             <p className="social_login">Or Sign In With Social Platforms</p>
             <div className="social-media">
-              <a href="/login" className="social-icon">
-                <GTranslateIcon />
-              </a>
-              <a href="/login" className="social-icon">
-                <FacebookIcon />
-              </a>
+            <button className="social-icon" onClick={responseGoogle}>
+              <GTranslateIcon />
+            </button>
             </div>
           </form>
         </div>
