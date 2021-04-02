@@ -3,7 +3,7 @@ import Map from './Map';
 import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import BarChart from './BarChart';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -23,7 +23,8 @@ const parkingLocations = [
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 500,
+    width: '100%',
+    maxWidth: '300px'
   },
   media: {
     height: 140,
@@ -44,8 +45,8 @@ const FindSpace = () => {
   const [inputValue, setInputValue] = useState('');
   const [parkingStatus, setParkingStatus] = useState([]);
   const [parkingFullStatus, setParkingFullStatus] = useState(false);
-  const [totalParkingLeft, setTotalParkingLeft] = useState(0);
-  const [totalParkingSpace, setTotalParkingSpace] = useState(0);
+  const [totalParkingLeft, setTotalParkingLeft] = useState('');
+  const [totalParkingSpace, setTotalParkingSpace] = useState('');
 
   useEffect(() => {
     firebase.database().ref('/Parking Lot A')
@@ -98,7 +99,7 @@ const FindSpace = () => {
                   title={value.place}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography style={{ display: 'flex', justifyContent: 'center'}} gutterBottom variant="h5" component="h2">
                     {value.place}
                   </Typography>
                   <ParkingCard

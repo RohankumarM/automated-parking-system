@@ -4,7 +4,6 @@ import LockIcon from '@material-ui/icons/Lock';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
 import { AuthContext } from '../shared/context/authContext';
-import GoogleLogin from 'react-google-login';
 import fire, { provider, storage } from '../base';
 import * as firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
@@ -153,9 +152,16 @@ const Login = () => {
 
             <p className="social_login">Or Sign In With Social Platforms</p>
             <div className="social-media">
-              <button className="social-icon" onClick={responseGoogle}>
-                <GTranslateIcon />
+              <button
+                type="button"
+                onClick={responseGoogle}
+                style={{ background: '#4285f4', color: 'white', border: 'none', width: '110px', height: '40px', borderRadius: '3%' }}>
+                <img src="https://www.iconfinder.com/data/icons/social-media-2210/24/Google-512.png"
+                  style={{ width: '30px', background: 'white', borderRadius: '50%' }}
+                  alt="" />
+                <b style={{ top: '-10px', left: '5px', position: 'relative' }}>Google</b>
               </button>
+
             </div>
           </form>
 

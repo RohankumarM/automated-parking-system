@@ -4,10 +4,10 @@ import * as firebase from 'firebase';
 import '../styles/Map.css';
 
 const mapStyles = {
-  width: '350px',
-  height: '200px',
-  margin: '30px 0 40px',
-  minWidth: '40%'
+  position: 'absolute',
+  width: '100%',
+  height: '48%',
+  maxWidth: '400px',
 };
 
 export class Map extends React.Component {
@@ -46,13 +46,6 @@ export class Map extends React.Component {
         }
       });
     });
-  }
-
-  componentDidMount() {
-    this.setState({
-      lat: this.props.selectedLocation.latitude,
-      lng: this.props.selectedLocation.longitude
-    })
   }
 
   onMarkerClick = (props, marker, e) =>

@@ -2,6 +2,7 @@
   position: absolute;
   width: 100%;
   min-height: 100vh;
+  background-color: #5cdb95;
 }
 
 .booking__header{

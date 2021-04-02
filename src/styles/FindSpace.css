@@ -1,52 +1,58 @@
-.findSpace{
-  margin:0;
+.findSpace {
+  margin: 0;
+  height: 100vh;
 }
 
-.findSpace__search__top{
+.findSpace__search__top {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 15px;
 }
 
-.findSpace__title{
-  display:flex;
+.findSpace__title {
+  display: flex;
   justify-content: center;
   font-size: 32px !important;
   padding-top: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #f8fdf1;
   font-weight: 500 !important;
 }
 
-.findSpace__search__map{
+.findSpace__search__map {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-top: 45px;
 }
 
-.findSpace__search__map__left{
+.findSpace__search__map__left {
   flex: 0.5;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.findSpace__search__map__right{
-  flex: 0.5;
-}
-
-/* .bar__chart{
   display: flex;
   justify-content: center;
-  margin-top: 30px;
-} */
-
-.MuiCardActions-root{
-  justify-content: center !important;
 }
 
-.MuiAutocomplete-input{
+.findSpace__search__map__right {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-right: 50px;
+}
+
+.MuiCardActions-root {
+  justify-content: center !important;
+  height: 60px;
+}
+
+.MuiAutocomplete-input {
   color: #f8fdf1 !important;
   font-weight: 400;
+}
+
+.MuiPaper-root {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 .book__now__btn {
@@ -58,18 +64,32 @@
   border-radius: 20px;
 }
 
-@media(max-width: 950px){
-  .findSpace__search__map{
+@media (max-width: 1024px) {
+  .findSpace__search__map {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 30px;
   }
-  .findSpace__search__map__left{
-    max-width: 100%;
+
+  .findSpace__search__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
   }
 
-  .findSpace__search__map__right{
-    max-height: 400px;
+  .MuiCardActions-root {
+    margin: auto;
+    height: 60px;
+  }
+
+  .findSpace__search__map__left {
+    display: flex;
+    justify-content: center;
+  }
+
+  .findSpace__search__map__right {
+    margin: 30px 50px;
   }
 }
-

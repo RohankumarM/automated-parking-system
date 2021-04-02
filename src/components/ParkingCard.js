@@ -1,17 +1,17 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import MailIcon from '@material-ui/icons/Mail';
-import parkingSpace from '../images/parking-space.svg';
+import { Typography } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
+// import MailIcon from '@material-ui/icons/Mail';
+// import parkingSpace from '../images/parking-space.svg';
 import "../styles/ParkingCard.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     '& > *': {
+//       margin: theme.spacing(1),
+//     },
+//   },
+// }));
 
 
 const ParkingCard = ({ status, fullStatus, totalParkingLeft, totalParkingSpace }) => {
@@ -23,18 +23,18 @@ const ParkingCard = ({ status, fullStatus, totalParkingLeft, totalParkingSpace }
   //   totalParkingSpace: this.props.totalParkingSpace,
   //   inputStyle: '',
   // };
-  const classes = useStyles();
+  // const classes = useStyles();
 
-  let EmptyStyle = {
-    borderTop: '6px solid green'
-  };
-  let FullStyle = {
-    borderTop: '6px solid red'
-  };
+  // let EmptyStyle = {
+  //   borderTop: '6px solid green'
+  // };
+  // let FullStyle = {
+  //   borderTop: '6px solid red'
+  // };
 
-  const handleBooking = (e) => {
-    console.log('booking');
-  }
+  // const handleBooking = (e) => {
+  //   console.log('booking');
+  // }
 
   return (
     <div className="parkingCard">
@@ -58,13 +58,16 @@ const ParkingCard = ({ status, fullStatus, totalParkingLeft, totalParkingSpace }
               : <div className="booking-status">Click on Book Tab to book parking</div>}
           </Card>
         </div> */}
-
-      <Typography variant="body2" color="textSecondary" component="p">
-        Total Parking: {totalParkingSpace}
-      </Typography>
-      <Typography variant="body2" color="textSecondary" component="p">
-        Available Parking: {totalParkingLeft}
-      </Typography>
+      {totalParkingLeft === '' || totalParkingSpace === '' ? <CircularProgress />
+        : <div>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Total Parking Space: {totalParkingSpace}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Available Parking Space: {totalParkingLeft}
+          </Typography>
+        </div>
+      }
 
       {/* <div className="car-status-display">
           {Object.entries(this.props.status).map((status, index) => {

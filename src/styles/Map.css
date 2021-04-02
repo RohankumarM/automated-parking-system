@@ -1,7 +1,11 @@
-.map{
-  height: 300px;
-  max-width: 100%;
+.map div{
+  max-width: 700px;
+  max-height: 700px;
 }
 
 .map div:first-child{
+  position: relative !important;
+  height: 310px !important;
+  max-width: 800px !important;
+  margin: auto;
 }
