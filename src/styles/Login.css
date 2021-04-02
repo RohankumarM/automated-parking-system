@@ -64,6 +64,7 @@ form{
 
 form.login-form{
   z-index: 2;
+  margin-top: 80px;
 }
 
 form.signup-form{
@@ -153,7 +154,6 @@ form.signup-form{
 .social-media{
   display: flex;
   justify-content: center;
-  margin-top: -80px;
 }
 
 .social-icon{

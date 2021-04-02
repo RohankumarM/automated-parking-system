@@ -152,12 +152,13 @@ const Login = () => {
             <input type="submit" value="Login" className="login_btn" />
 
             <p className="social_login">Or Sign In With Social Platforms</p>
+            <div className="social-media">
+              <button className="social-icon" onClick={responseGoogle}>
+                <GTranslateIcon />
+              </button>
+            </div>
           </form>
-          <div className="social-media">
-            <button className="social-icon" onClick={responseGoogle}>
-              <GTranslateIcon />
-            </button>
-          </div>
+
 
           <form action="" className="signup-form" onSubmit={handleFirebaseSignUp}>
             <h2 className="title">Signup</h2>
@@ -186,9 +187,9 @@ const Login = () => {
 
             <p className="social_login">Or Sign In With Social Platforms</p>
             <div className="social-media">
-            <button className="social-icon" onClick={responseGoogle}>
-              <GTranslateIcon />
-            </button>
+              <button className="social-icon" onClick={responseGoogle}>
+                <GTranslateIcon />
+              </button>
             </div>
           </form>
         </div>
